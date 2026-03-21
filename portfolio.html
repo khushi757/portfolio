@@ -1,114 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial;
-            background: #f4f4f4;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khushi Mittal | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#0f172a;color:#fff;scroll-behavior:smooth}
 
-        header {
-            background: #333;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
+/* Animated Background */
+/* Animated Gradient Background (smooth like Abhik style) */
+body::before{
+ content:"";
+ position:fixed;
+ width:100%;
+ height:100%;
+ top:0;
+ left:0;
+ background:linear-gradient(270deg,#0f172a,#1e293b,#020617,#0f172a);
+ background-size:600% 600%;
+ animation:gradientMove 12s ease infinite;
+ z-index:-1;
+}
+@keyframes gradientMove{
+ 0%{background-position:0% 50%}
+ 50%{background-position:100% 50%}
+ 100%{background-position:0% 50%}
+}
+@keyframes moveBg{
+ from{transform:translate(0,0)}
+ to{transform:translate(-50px,-50px)}
+}
 
-        nav {
-            background: #555;
-            padding: 10px;
-            text-align: center;
-        }
+nav{position:fixed;width:100%;top:0;background:#020617;padding:15px;display:flex;justify-content:space-between;align-items:center;z-index:1000}
+.logo{font-weight:700}
+.nav-links{display:flex;gap:20px}
+.nav-links a{color:#fff;text-decoration:none}
+.menu{display:none;font-size:24px;cursor:pointer}
 
-        nav a {
-            color: white;
-            margin: 10px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+@media(max-width:768px){
+.nav-links{display:none;flex-direction:column;position:absolute;top:60px;right:0;background:#020617;width:200px;padding:20px}
+.nav-links.active{display:flex}
+.menu{display:block}
+}
 
-        section {
-            padding: 20px;
-            margin: 20px;
-            background: white;
-            border-radius: 10px;
-        }
+.hero{height:100vh;display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;padding:20px}
+.hero-text{max-width:500px}
+.hero h1{font-size:50px}
+.hero span{color:#38bdf8}
+.hero img{width:220px;border-radius:50%;border:4px solid #38bdf8}
+.hero button{margin-top:15px;padding:10px 20px;border:none;border-radius:8px;background:#38bdf8;cursor:pointer}
 
-        h2 {
-            color: #333;
-        }
+section{padding:80px 10%}
+.card{background:#1e293b;padding:25px;border-radius:15px;margin-top:20px}
 
-        .project {
-            background: #eee;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 8px;
-        }
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.project-card{background:#1e293b;padding:20px;border-radius:15px}
 
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #333;
-            color: white;
-        }
-    </style>
+footer{text-align:center;padding:20px;background:#020617}
+</style>
 </head>
-
 <body>
 
-<header>
-    <h1>KHUSHI</h1>
-    <p>CSE Student | Developer</p>
-</header>
-
 <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+<div class="logo">Khushi</div>
+<div class="menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+<div class="nav-links" id="navLinks">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#education">Education</a>
+<a href="#certificates">Certificates</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
 </nav>
 
-<section id="about">
-    <h2>About Me</h2>
-    <p>I am a Computer Science student passionate about coding and building applications.</p>
+<div class="hero">
+<div class="hero-text">
+<h1>Hi, I'm <span>Khushi Mittal</span></h1>
+<p id="typing"></p>
+<button onclick="document.getElementById('projects').scrollIntoView()">View Work</button>
+</div>
+<img src="your-photo.jpg">
+</div>
+
+<section id="about" data-aos="fade-up">
+<h2>About</h2>
+<div class="card">
+<p>CSE student exploring AI/ML and building real-world applications.</p>
+</div>
 </section>
 
-<section id="skills">
-    <h2>Skills</h2>
-    <ul>
-        <li>C / C++</li>
-        <li>Java / Python</li>
-        <li>HTML / CSS / Javascript </li>
-        <li>Android Development</li>
-    </ul>
+<section id="skills" data-aos="fade-up">
+<h2>Skills</h2>
+<div class="card">
+<p>Java, Web Development, GitHub, AI/ML Basics</p>
+</div>
 </section>
 
-<section id="projects">
-    <h2>Projects</h2>
-
-    <div class="project">
-        <h3>Smart Warranty App</h3>
-        <p>An Android app to manage product warranties.</p>
-    </div>
-
-    <div class="project">
-        <h3>Student Management System</h3>
-        <p>A system to manage student data.</p>
-    </div>
-
+<section id="education" data-aos="fade-up">
+<h2>Education</h2>
+<div class="card">
+<p>B.Tech in Computer Science Engineering</p>
+</div>
 </section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: km6931329@gmail.com</p>
+<section id="certificates" data-aos="fade-up">
+<h2>Certificates & Achievements</h2>
+<div class="card">
+<p>Add your certifications here</p>
+</div>
+</section>
+
+<section id="projects" data-aos="fade-up">
+<h2>Projects</h2>
+<div class="projects">
+<div class="project-card">
+<h3>Smart Warranty App</h3>
+<p>Group Android Project</p>
+</div>
+</div>
+</section>
+
+<section id="contact" data-aos="fade-up">
+<h2>Contact</h2>
+<div class="card">
+<p>Email: your@email.com</p>
+</div>
 </section>
 
 <footer>
-    <p>© 2026 KHUSHI</p>
+<p>© 2026 Khushi Mittal</p>
 </footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init();
+function toggleMenu(){document.getElementById("navLinks").classList.toggle("active")}
+const text="CSE Student | AI/ML Enthusiast";let i=0;
+function typing(){if(i<text.length){document.getElementById("typing").innerHTML+=text.charAt(i);i++;setTimeout(typing,50)}}
+typing();
+</script>
 
 </body>
 </html>
